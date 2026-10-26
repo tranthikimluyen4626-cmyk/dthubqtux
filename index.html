@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ứng xử Đạo đức & Văn hóa DThU – Trường Đại học Đồng Tháp</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            apple: {
+              bg: '#fbfbfd',
+              card: '#ffffff',
+              gray: '#f5f5f7',
+              text: '#1d1d1f',
+              subtext: '#6e6e73',
+              blue: '#0066cc',
+              border: '#d2d2d7'
+            },
+            dthu: {
+              blue: '#00529b',
+              lotus: '#d6336c',
+              lotusLight: '#fff0f6'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #fbfbfd;
+      color: #1d1d1f;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .dark body {
+      background-color: #000000;
+      color: #f5f5f7;
+    }
+    .apple-glass {
+      background: rgba(251, 251, 253, 0.82);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+    }
+    .dark .apple-glass {
+      background: rgba(29, 29, 31, 0.82);
+    }
+    .apple-card {
+      background: #ffffff;
+      border-radius: 22px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+    }
+    .dark .apple-card {
+      background: #1d1d1f;
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    }
+    .apple-card:hover {
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.07);
+    }
+    .nav-pill.active {
+      background-color: #1d1d1f;
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .dark .nav-pill.active {
+      background-color: #f5f5f7;
+      color: #1d1d1f;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .apple-card { box-shadow: none !important; border: 1px solid #ccc !important; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body class="selection:bg-blue-600 selection:text-white transition-colors duration-300">
+
+  <!-- TOP GLOBAL BAR (Apple Style) -->
+  <header class="border-b border-black/5 dark:border-white/10 bg-white/90 dark:bg-zinc-950/90 text-xs no-print">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-11 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <!-- DThU Lotus & Book Emblem SVG -->
+        <a href="#" class="flex items-center space-x-2.5 group">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-dthu-blue to-dthu-lotus flex items-center justify-center text-white font-bold shadow-sm group-hover:scale-105 transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C9.5 6 7 9 7 12a5 5 0 0 0 10 0c0-3-2.5-6-5-10Z"/>
+              <path d="M4 13c2.5 0 5 2 8 5 3-3 5.5-5 8-5-1 5-4.5 8-8 8s-7-3-8-8Z"/>
+            </svg>
+          </div>
+          <span class="font-semibold tracking-tight text-sm text-zinc-900 dark:text-zinc-100">Đại học Đồng Tháp</span>
+        </a>
+        <span class="text-zinc-300 dark:text-zinc-700">|</span>
+        <span class="text-zinc-500 dark:text-zinc-400 hidden sm:inline">Compliance & Ethics Portal • Đất Sen Hồng</span>
+      </div>
+
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <!-- Search Trigger -->
+        <button onclick="openSearchModal()" class="flex items-center space-x-2 px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <span class="hidden md:inline">Tra cứu quy tắc...</span>
+          <kbd class="hidden md:inline-block text-[10px] px-1.5 py-0.5 bg-white dark:bg-zinc-900 rounded border border-zinc-300 dark:border-zinc-700">⌘K</kbd>
+        </button>
+
+        <!-- Annual Certification Button -->
+        <button onclick="openCertModal()" id="certStatusBtn" class="px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-apple-blue dark:text-blue-400 font-medium hover:bg-blue-100 transition flex items-center space-x-1.5">
+          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse" id="certDot"></span>
+          <span>Cam kết Tuân thủ</span>
+        </button>
+
+        <!-- Speak Up Hotline Button -->
+        <button onclick="openSpeakUpModal()" class="px-3 py-1 rounded-full bg-dthu-lotus text-white font-medium hover:opacity-95 transition shadow-sm flex items-center space-x-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
+          <span>Lên tiếng (Speak Up)</span>
+        </button>
+
+        <!-- Dark Mode Toggle -->
+        <button onclick="toggleDarkMode()" class="p-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 transition" title="Chuyển chế độ Sáng/Tối">
+          <svg id="sunIcon" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg id="moonIcon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- STICKY APPLE-STYLE PILLAR NAVIGATION BAR -->
+  <nav class="sticky top-0 z-40 apple-glass border-b border-black/10 dark:border-white/10 no-print">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between overflow-x-auto no-scrollbar">
+      <div class="flex items-center space-x-1 sm:space-x-1.5 text-xs sm:text-sm whitespace-nowrap py-1">
+        <a href="#gioi-thieu" data-section="gioi-thieu" class="nav-pill active px-3.5 py-1.5 rounded-full text-zinc-700 dark:text-zinc-300 hover:bg-black/5 dark:hover:bg-white/10 transition">Giới thiệu & Thông điệp</a>
+        <a href="#hanh-vi" data-section="hanh-vi" class="nav-pill px-3.5 py-1.5 rounded-full text-zinc-700 dark:text-zinc-300 hover:bg-black/5 dark:hover:bg-white/10 transition">Hành vi Học đường</a>
+        <a href="#bao-ve-dthu" data-section="bao-ve-dthu" class="nav-pill px-3.5 py-1.5 rounded-full text-zinc-700 dark:text-zinc-300 hover:bg-black/5 dark:hover:bg-white/10 transition">Bảo vệ DThU & AI</a>
+        <a href="#trach-nhiem" data-section="trach-nhiem" class="nav-pill px-3.5 py-1.5 rounded-full text-zinc-700 dark:text-zinc-300 hover:bg-black/5 dark:hover:bg-white/10 transition">Trách nhiệm Giải trình</a>
+        <a href="#liem-chinh" data-section="liem-chinh" class="nav-pill px-3.5 py-1.5 rounded-full text-zinc-700 dark:text-zinc-300 hover:bg-black/5 dark:hover:bg-white/10 transition">Sự Liêm chính</a>
+        <a href="#tai-nguyen" data-section="tai-nguyen" class="nav-pill px-3.5 py-1.5 rounded-full text-zinc-700 dark:text-zinc-300 hover:bg-black/5 dark:hover:bg-white/10 transition">La bàn & Thực thi</a>
+      </div>
+      <button onclick="window.print()" class="hidden lg:flex items-center space-x-1.5 text-xs font-medium text-apple-blue dark:text-blue-400 hover:underline ml-4 shrink-0">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        <span>In / Xuất PDF</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO COVER SECTION (Apple Business Conduct Cover Style) -->
+  <section class="relative overflow-hidden pt-14 pb-16 sm:pt-20 sm:pb-24 border-b border-black/5 dark:border-white/10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-zinc-200/70 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-semibold tracking-wide uppercase mb-6">
+        <span>Chính sách Chuẩn mực Đạo đức & Văn hóa</span>
+        <span>•</span>
+        <span class="text-dthu-lotus dark:text-pink-400">Phiên bản 2026</span>
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
+        Ứng xử trong Học thuật & Quản trị.<br />
+        <span class="bg-gradient-to-r from-dthu-blue via-blue-600 to-dthu-lotus bg-clip-text text-transparent">Cách chúng ta kiến tạo giá trị.</span>
+      </h1>
+      <p class="max-w-3xl mx-auto text-lg sm:text-xl text-apple-subtext dark:text-zinc-400 font-normal leading-relaxed mb-10">
+        Tại Trường Đại học Đồng Tháp, mọi bài giảng, công trình nghiên cứu và quyết định quản trị đều phản ánh "Nhân cách DThU". Chúng ta đặt sự phát triển giá trị con người, niềm tin xã hội và sự liêm chính lên trên mọi lợi ích vật chất ngắn hạn.
+      </p>
+
+      <!-- 5 Core Values Bento Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 text-left mt-8">
+        <div class="apple-card p-4 sm:p-5">
+          <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-950 text-dthu-blue dark:text-blue-400 flex items-center justify-center font-bold text-sm mb-3">01</div>
+          <h3 class="font-bold text-sm text-zinc-900 dark:text-white mb-1">Chính trực</h3>
+          <p class="text-xs text-apple-subtext dark:text-zinc-400 leading-relaxed">Trung thực tuyệt đối trong dạy, học, nghiên cứu và tài chính.</p>
+        </div>
+        <div class="apple-card p-4 sm:p-5">
+          <div class="w-8 h-8 rounded-full bg-pink-100 dark:bg-pink-950 text-dthu-lotus dark:text-pink-400 flex items-center justify-center font-bold text-sm mb-3">02</div>
+          <h3 class="font-bold text-sm text-zinc-900 dark:text-white mb-1">Tôn trọng</h3>
+          <p class="text-xs text-apple-subtext dark:text-zinc-400 leading-relaxed">Đề cao phẩm giá, đa dạng và đối xử bằng sự cảm thông, lịch sự.</p>
+        </div>
+        <div class="apple-card p-4 sm:p-5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 flex items-center justify-center font-bold text-sm mb-3">03</div>
+          <h3 class="font-bold text-sm text-zinc-900 dark:text-white mb-1">Công bằng</h3>
+          <p class="text-xs text-apple-subtext dark:text-zinc-400 leading-relaxed">Đánh giá, chấm điểm và đãi ngộ công minh, không thiên vị.</p>
+        </div>
+        <div class="apple-card p-4 sm:p-5">
+          <div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-400 flex items-center justify-center font-bold text-sm mb-3">04</div>
+          <h3 class="font-bold text-sm text-zinc-900 dark:text-white mb-1">Bảo mật Số</h3>
+          <p class="text-xs text-apple-subtext dark:text-zinc-400 leading-relaxed">Bảo vệ dữ liệu cá nhân, tài sản công và ứng dụng AI có đạo đức.</p>
+        </div>
+        <div class="apple-card p-4 sm:p-5 col-span-2 sm:col-span-1">
+          <div class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 flex items-center justify-center font-bold text-sm mb-3">05</div>
+          <h3 class="font-bold text-sm text-zinc-900 dark:text-white mb-1">Phụng sự</h3>
+          <p class="text-xs text-apple-subtext dark:text-zinc-400 leading-relaxed">Tiên phong đổi mới, cống hiến bền vững cho vùng ĐBSCL.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-24">
+
+    <!-- ==========================================
+         SECTION 1: GIỚI THIỆU & THÔNG ĐIỆP LÃNH ĐẠO
+         ========================================== -->
+    <section id="gioi-thieu" class="scroll-mt-24 space-y-12">
+      <div class="max-w-3xl">
+        <p class="text-xs font-bold uppercase tracking-widest text-dthu-blue dark:text-blue-400 mb-2">Phần 01 • Giới thiệu & Định hướng Chiến lược</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">Kiến tạo Giá trị Thực – Hội tụ Niềm tin – Cộng hưởng Thịnh vượng</h2>
+      </div>
+
+      <!-- Leadership Message Card (Apple CEO Note Style) -->
+      <div class="apple-card p-8 sm:p-12 relative overflow-hidden bg-gradient-to-br from-white via-white to-blue-50/40 dark:from-zinc-900 dark:via-zinc-900 dark:to-blue-950/20">
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+          <div class="lg:w-1/3 space-y-4">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-dthu-blue/10 text-dthu-blue dark:text-blue-400 text-xs font-semibold">
+              <span>Thông điệp từ Ban Lãnh đạo</span>
+            </div>
+            <h3 class="text-2xl font-bold text-zinc-900 dark:text-white leading-snug">
+              "Một trường đại học giành được sự tôn trọng không phải nhờ quy mô doanh thu, mà nhờ Nhân cách Học thuật."
+            </h3>
+            <p class="text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed">
+              Triết lý Quản lý bằng Giá trị (MBV) khẳng định: Khi chúng ta chuyên tâm phụng sự chất lượng giáo dục bằng sự chính trực, các nguồn lực đầu tư và sự ủng hộ của xã hội sẽ tự khắc hội tụ như một phần thưởng xứng đáng.
+            </p>
+            <div class="pt-4 border-t border-black/10 dark:border-white/10">
+              <p class="font-bold text-sm text-zinc-900 dark:text-white">TM. Hội đồng Trường & Ban Giám hiệu</p>
+              <p class="text-xs text-apple-subtext dark:text-zinc-400">Trường Đại học Đồng Tháp (DThU)</p>
+            </div>
+          </div>
+
+          <div class="lg:w-2/3 space-y-4 text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed border-l-0 lg:border-l border-black/10 dark:border-white/10 lg:pl-10">
+            <p>
+              <em>Kính gửi các thầy cô giáo, cán bộ, viên chức, các em sinh viên, học viên cùng Quý Đối tác, Nhà đầu tư và Cộng đồng xã hội,</em>
+            </p>
+            <p>
+              Trên quê hương Đất Sen Hồng, Trường Đại học Đồng Tháp luôn kiên định với xác tín cốt lõi: <strong>Giá trị đích thực của một cơ sở giáo dục đại học không đo bằng những con số lợi nhuận tài chính ngắn hạn, mà được định nghĩa bằng sự trưởng thành toàn diện của người học và những đóng góp bền vững cho xã hội.</strong> Nguồn lực tài chính là điều kiện cần để nuôi dưỡng "cơ thể vật chất" của Nhà trường, nhưng chính các giá trị đạo đức, sự minh bạch và tinh thần cống hiến mới là "linh hồn" làm nên thương hiệu Đại học Đồng Tháp.
+            </p>
+            <p>
+              Bộ Quy tắc Ứng xử Đạo đức này là <strong>Bản Giao ước Giá trị</strong> nhằm đảm bảo mọi hoạt động của Nhà trường đều vận hành theo phương châm <strong>"Cùng đồng hành – Cùng có lợi" (Win - Win)</strong>. Đối với các Quý Doanh nghiệp, Nhà tài trợ và Đối tác trong ngoài nước, hợp tác và đầu tư vào Trường Đại học Đồng Tháp là một <strong>khoản đầu tư chiến lược an toàn và giàu giá trị nhất cho tương lai</strong>:
+            </p>
+            <ul class="space-y-2.5 pl-1">
+              <li class="flex items-start space-x-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                <span><strong>An toàn Pháp lý & Minh bạch Tuyệt đối:</strong> 100% nguồn vốn hợp tác, quỹ học bổng và dự án nghiên cứu được kiểm soát minh bạch, không khoan nhượng với tham nhũng hay "lại quả".</span>
+              </li>
+              <li class="flex items-start space-x-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                <span><strong>Cộng hưởng Uy tín Thương hiệu:</strong> Đồng hành cùng một định chế giáo dục có chuẩn mực đạo đức cao giúp nâng tầm giá trị trách nhiệm xã hội (CSR/ESG) của Quý Đối tác trước công chúng.</span>
+              </li>
+              <li class="flex items-start space-x-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                <span><strong>Đón nhận Nguồn Nhân lực Tử tế & Tài năng:</strong> Tiếp cận trực tiếp với thế hệ sinh viên tốt nghiệp không chỉ vững tay nghề mà còn có kỷ luật, lòng trung thực và thái độ làm việc chuẩn mực.</span>
+              </li>
+            </ul>
+            <p class="font-medium text-zinc-900 dark:text-white pt-2">
+              Tại Trường Đại học Đồng Tháp, không một chỉ tiêu thành tích hay lợi ích cục bộ nào được phép đánh đổi bằng sự tổn thương về đạo đức và niềm tin của người học cùng các đối tác.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE STAKEHOLDER VALUE MATRIX -->
+      <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-white">Ma trận Lợi ích Cộng hưởng các Bên liên quan (Stakeholder Value Matrix)</h3>
+            <p class="text-sm text-apple-subtext dark:text-zinc-400">Chọn từng nhóm đối tượng hữu quan để xem cam kết bảo vệ quyền lợi và động lực hợp tác đầu tư tại DThU.</p>
+          </div>
+          <!-- Stakeholder Filter Buttons -->
+          <div class="flex flex-wrap gap-1.5 bg-zinc-200/70 dark:bg-zinc-800 p-1 rounded-full text-xs">
+            <button onclick="switchStakeholder('investor')" id="tab-investor" class="stakeholder-tab bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-semibold px-3.5 py-1.5 rounded-full shadow-sm transition">Nhà đầu tư & Đối tác</button>
+            <button onclick="switchStakeholder('student')" id="tab-student" class="stakeholder-tab text-zinc-600 dark:text-zinc-400 px-3.5 py-1.5 rounded-full hover:text-zinc-900 transition">Sinh viên & Gia đình</button>
+            <button onclick="switchStakeholder('faculty')" id="tab-faculty" class="stakeholder-tab text-zinc-600 dark:text-zinc-400 px-3.5 py-1.5 rounded-full hover:text-zinc-900 transition">Giảng viên & Viên chức</button>
+            <button onclick="switchStakeholder('community')" id="tab-community" class="stakeholder-tab text-zinc-600 dark:text-zinc-400 px-3.5 py-1.5 rounded-full hover:text-zinc-900 transition">Sở GD&ĐT & Cộng đồng</button>
+          </div>
+        </div>
+
+        <div id="stakeholderContent" class="apple-card p-6 sm:p-8">
+          <!-- Dynamic Content Injected by JS -->
+        </div>
+      </div>
+
+      <!-- Scope & Responsibilities Banner (Apple Page 3-4 Style) -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="apple-card p-6 sm:p-8">
+          <h4 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Phạm vi Áp dụng Toàn diện</h4>
+          <p class="text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed mb-4">
+            Bộ Quy tắc này áp dụng bắt buộc đối với Hội đồng trường, Ban Giám hiệu, toàn thể cán bộ, giảng viên, viên chức, người lao động và toàn thể sinh viên, học viên, nghiên cứu sinh của Trường Đại học Đồng Tháp.
+          </p>
+          <p class="text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed">
+            Nhà trường đồng thời yêu cầu các đối tác cung ứng dịch vụ (căn-tin, an ninh, công nghệ), đơn vị liên kết đào tạo và cơ sở thực tập tuân thủ các nguyên tắc liêm chính tương ứng khi hợp tác với DThU.
+          </p>
+        </div>
+
+        <div class="apple-card p-6 sm:p-8">
+          <h4 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Nghĩa vụ Thực hiện Hành động của Bạn</h4>
+          <ul class="space-y-3 text-sm text-zinc-700 dark:text-zinc-300">
+            <li class="flex items-start space-x-2.5">
+              <span class="font-bold text-dthu-blue dark:text-blue-400">1. Tuân thủ tinh thần & nội dung:</span>
+              <span>Hành xử chuẩn mực tại giảng đường, nơi làm việc và trên không gian mạng.</span>
+            </li>
+            <li class="flex items-start space-x-2.5">
+              <span class="font-bold text-dthu-lotus dark:text-pink-400">2. Lên tiếng (Speak Up):</span>
+              <span>Báo cáo kịp thời mọi dấu hiệu vi phạm quy chế, gian lận hoặc lạm quyền qua kênh bảo mật của Trường.</span>
+            </li>
+            <li class="flex items-start space-x-2.5">
+              <span class="font-bold text-emerald-600 dark:text-emerald-400">3. Hành xử cẩn trọng & Đặt câu hỏi:</span>
+              <span>Áp dụng "La bàn Đạo đức 5 bước" và tham vấn Hội đồng Đạo đức ngay khi gặp tình huống lưỡng nan.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: HÀNH VI TẠI MÔI TRƯỜNG HỌC ĐƯỜNG
+         ========================================== -->
+    <section id="hanh-vi" class="scroll-mt-24 space-y-10 pt-8 border-t border-black/10 dark:border-white/10">
+      <div class="max-w-3xl">
+        <p class="text-xs font-bold uppercase tracking-widest text-dthu-lotus dark:text-pink-400 mb-2">Phần 02 • Hành vi tại Nơi làm việc & Giảng đường</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">Tôn trọng, Công lý Đánh giá và An toàn Học đường</h2>
+        <p class="text-base text-apple-subtext dark:text-zinc-400 mt-3">
+          Môi trường giáo dục chỉ phát huy hợp lực (Synergy) khi quyền lực quản lý và giảng dạy được sử dụng đúng đắn, công minh và tôn trọng phẩm giá của từng cá nhân.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 searchable-group">
+        <!-- Card 1 -->
+        <div class="apple-card p-6 sm:p-7 flex flex-col justify-between searchable-item">
+          <div>
+            <span class="text-xs font-semibold text-dthu-blue dark:text-blue-400 uppercase">Điều 4 • Cán bộ & Giảng viên</span>
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-white mt-2 mb-3">Vai trò "Nhân cách Then chốt" & Ba Chiều kích Công lý</h3>
+            <p class="text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed mb-4">
+              Giảng viên và cán bộ quản lý phải là tấm gương mẫu mực, không lạm dụng vị thế chấm điểm hay quản lý để gây sức ép tâm lý với người học. Thực thi nghiêm 3 nguyên tắc công lý:
+            </p>
+            <ul class="text-xs space-y-2 text-zinc-700 dark:text-zinc-300">
+              <li>• <strong>Công lý phân phối:</strong> Điểm số, học bổng, khen thưởng phản ánh đúng thực lực (*Hình - Danh*).</li>
+              <li>• <strong>Công lý quan hệ:</strong> Công khai đề cương và tiêu chí chấm (Rubric) ngay từ đầu học phần.</li>
+              <li>• <strong>Công lý trật tự:</strong> Quy trình xử lý học vụ nhất quán, không có đặc cách ngầm.</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-black/5 dark:border-white/5 text-xs text-apple-subtext">
+            Nghiêm cấm mọi hình thức gợi ý học thêm thu phí trái quy định hoặc trù dập người học.
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="apple-card p-6 sm:p-7 flex flex-col justify-between searchable-item">
+          <div>
+            <span class="text-xs font-semibold text-dthu-lotus dark:text-pink-400 uppercase">Điều 5 • Sinh viên & Học viên</span>
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-white mt-2 mb-3">Trung thực Học tập & Văn hóa Tôn sư Trọng đạo</h3>
+            <p class="text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed mb-4">
+              Sinh viên DThU học tập bằng thực lực và lòng tự trọng nghề nghiệp:
+            </p>
+            <ul class="text-xs space-y-2 text-zinc-700 dark:text-zinc-300">
+              <li>• <strong>Không gian lận:</strong> Tuyệt đối không quay cóp, thi hộ, học hộ, nhờ làm thuê tiểu luận/khóa luận hoặc mua bán điểm số.</li>
+              <li>• <strong>Quyền thảo luận & Phản biện:</strong> Sinh viên có quyền trao đổi học thuật thẳng thắn, lễ phép và đề nghị phúc khảo minh bạch.</li>
+              <li>• <strong>Trách nhiệm tập thể:</strong> Không bao che cho hành vi gian lận và tích cực đóng góp trong làm việc nhóm.</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-black/5 dark:border-white/5 text-xs text-apple-subtext">
+            Trang phục và ngôn phong chuẩn mực tại giảng đường, thư viện và trên mạng xã hội.
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="apple-card p-6 sm:p-7 flex flex-col justify-between searchable-item">
+          <div>
+            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase">Điều 6 • An toàn & Bình đẳng</span>
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-white mt-2 mb-3">Không Quấy rối, Phân biệt Đối xử & An toàn EH&S</h3>
+            <p class="text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed mb-4">
+              Nhà trường duy trì chính sách <strong>Không khoan nhượng</strong> đối với mọi hành vi xâm phạm phẩm giá và sự an toàn:
+            </p>
+            <ul class="text-xs space-y-2 text-zinc-700 dark:text-zinc-300">
+              <li>• <strong>Bình đẳng cơ hội:</strong> Không phân biệt vùng miền, dân tộc, tôn giáo, giới tính hay khuyết tật.</li>
+              <li>• <strong>Chống quấy rối:</strong> Cấm mọi hành vi quấy rối tình dục, bắt nạt học đường hoặc phát tán tin nhắn xúc phạm.</li>
+              <li>• <strong>An toàn (EH&S):</strong> Cấm ma túy, chất kích thích và lạm dụng rượu bia; quyền từ chối thao tác thí nghiệm nguy hiểm thiếu đồ bảo hộ.</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-black/5 dark:border-white/5 text-xs text-apple-subtext">
+            Bảo vệ quyền được làm việc và học tập trong môi trường an toàn thể chất & tâm lý.
+          </div>
+        </div>
+      </div>
+
+      <!-- Apple-style Q&A Callout Box -->
+      <div class="apple-card p-6 sm:p-8 bg-zinc-100/80 dark:bg-zinc-900">
+        <h4 class="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-4">Tình huống Hỏi & Đáp Thực tế (Apple Q&A Format)</h4>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-white dark:bg-zinc-950 p-5 rounded-2xl border border-black/5 dark:border-white/10">
+            <p class="text-sm font-semibold text-zinc-900 dark:text-white mb-2">
+              <span class="text-apple-blue font-bold">Hỏi:</span> Trong giờ thực hành hóa sinh, thiết bị hút khí độc bị hỏng nhưng giảng viên hướng dẫn vẫn yêu cầu lớp làm tiếp cho kịp tiến độ học phần. Em có quyền dừng lại không?
+            </p>
+            <p class="text-xs sm:text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed">
+              <span class="text-emerald-600 font-bold">Đáp:</span> <strong>Có.</strong> Theo nguyên tắc <em>Quyền được biết và từ chối công việc nguy hiểm hợp lý</em> tại Điều 6, không một áp lực tiến độ nào được đặt lên trên tính mạng và sức khỏe. Bạn có quyền tạm dừng thao tác và báo ngay cho Ban Quản lý Phòng thí nghiệm hoặc Đường dây nóng An toàn của Trường.
+            </p>
+          </div>
+          <div class="bg-white dark:bg-zinc-950 p-5 rounded-2xl border border-black/5 dark:border-white/10">
+            <p class="text-sm font-semibold text-zinc-900 dark:text-white mb-2">
+              <span class="text-apple-blue font-bold">Hỏi:</span> Một nhóm chat nội bộ chia sẻ những hình ảnh chế giễu ngoại hình và giới tính của một bạn sinh viên trong khoa, nói rằng "chỉ đùa cho vui". Điều này có vi phạm Bộ Quy tắc không?
+            </p>
+            <p class="text-xs sm:text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed">
+              <span class="text-emerald-600 font-bold">Đáp:</span> <strong>Có vi phạm nghiêm trọng.</strong> Tương tự các án lệ đạo đức quốc tế, việc phát tán nội dung xúc phạm giới tính hay ngoại hình trên mạng nội bộ tạo ra môi trường học đường thù địch, xâm phạm nhân phẩm và bị xử lý kỷ luật nghiêm khắc dù dưới danh nghĩa trêu đùa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3: BẢO VỆ DThU, DỮ LIỆU & ĐẠO ĐỨC AI
+         ========================================== -->
+    <section id="bao-ve-dthu" class="scroll-mt-24 space-y-10 pt-8 border-t border-black/10 dark:border-white/10">
+      <div class="max-w-3xl">
+        <p class="text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 mb-2">Phần 03 • Bảo vệ Tài sản, Dữ liệu Cá nhân & Trí tuệ Nhân tạo (AI)</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">Đạo đức Công nghệ, Sở hữu Trí tuệ & Minh bạch Hồ sơ</h2>
+        <p class="text-base text-apple-subtext dark:text-zinc-400 mt-3">
+          Kế thừa chuẩn mực mới nhất từ <em>Apple Business Conduct (02/2026)</em>, DThU thúc đẩy chuyển đổi số và ứng dụng AI mạnh mẽ nhưng kiểm soát chặt chẽ rủi ro đạo văn, rò rỉ dữ liệu cá nhân (e-Portfolio) và gian lận tài chính.
+        </p>
+      </div>
+
+      <!-- AI Ethics Interactive Comparison Block -->
+      <div class="apple-card p-6 sm:p-10 searchable-item">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-black/10 dark:border-white/10">
+          <div>
+            <span class="px-2.5 py-1 rounded-md bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 text-xs font-bold uppercase">Điểm mới 2026 • Điều 7</span>
+            <h3 class="text-2xl font-bold text-zinc-900 dark:text-white mt-2">Quy tắc Sử dụng Trí tuệ Nhân tạo (AI) & Sở hữu Trí tuệ Học thuật</h3>
+          </div>
+          <p class="text-xs text-apple-subtext dark:text-zinc-400 max-w-sm">
+            AI là trợ lý nâng cao năng lực tư duy, không bao giờ là công cụ thay thế sự trung thực của nhà khoa học và người học.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-6">
+          <div class="p-5 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-800/50">
+            <h4 class="font-bold text-emerald-800 dark:text-emerald-300 text-sm flex items-center space-x-2 mb-3">
+              <span>✓ ĐƯỢC KHUYẾN KHÍCH & HỢP CHUẨN ĐẠO ĐỨC</span>
+            </h4>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
+              <li>• Sử dụng AI để gợi ý cấu trúc bài giảng, thiết kế trò chơi học tập (gamification), tóm tắt tài liệu tham khảo hoặc kiểm tra lỗi chính tả/ngữ pháp.</li>
+              <li>• <strong>Khai báo minh bạch (AI Disclosure):</strong> Ghi rõ công cụ AI đã sử dụng, câu lệnh (prompt) chính và phạm vi chỉnh sửa của tác giả trong phần Phụ lục/Phương pháp của tiểu luận, khóa luận hoặc bài báo.</li>
+              <li>• Kiểm chứng chéo mọi thông tin, số liệu và trích dẫn do AI sinh ra bằng nguồn học thuật gốc đáng tin cậy.</li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200/60 dark:border-rose-800/50">
+            <h4 class="font-bold text-rose-800 dark:text-rose-300 text-sm flex items-center space-x-2 mb-3">
+              <span>✕ NGHIÊM CẤM (VI PHẠM LIÊM CHÍNH HỌC THUẬT & BẢO MẬT)</span>
+            </h4>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
+              <li>• Sao chép nguyên văn nội dung do AI tạo ra để nộp làm bài thi, tiểu luận, khóa luận tốt nghiệp hoặc công trình nghiên cứu mà mạo nhận là của riêng mình.</li>
+              <li>• Sử dụng AI để ngụy tạo dữ liệu khảo sát, làm giả kết quả thực nghiệm khoa học hoặc tạo trích dẫn khống.</li>
+              <li>• <strong>Tải dữ liệu mật lên AI công cộng:</strong> Nghiêm cấm nhập đề thi chưa công bố, hồ sơ nhân sự, hoặc danh sách dữ liệu cá nhân của sinh viên/học sinh vào các nền tảng AI bên ngoài.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Privacy & Financial Integrity Cards -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="apple-card p-6 sm:p-8 searchable-item">
+          <span class="text-xs font-semibold text-apple-blue dark:text-blue-400 uppercase">Điều 9.1 • Quyền Riêng tư & Dữ liệu Số</span>
+          <h3 class="text-xl font-bold text-zinc-900 dark:text-white mt-1.5 mb-3">Bảo vệ Hồ sơ Học tập Điện tử (e-Portfolio) & Thông tin Cá nhân</h3>
+          <p class="text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed mb-4">
+            Thông tin định danh, điểm số, hồ sơ học tập điện tử (e-Portfolio), tình trạng sức khỏe và hoàn cảnh gia đình của sinh viên, học sinh thực tập và viên chức là tài sản mật được bảo vệ nghiêm ngặt:
+          </p>
+          <ul class="text-xs sm:text-sm space-y-2 text-zinc-700 dark:text-zinc-300">
+            <li>• Chỉ những bộ phận có thẩm quyền chuyên môn ("nhu cầu cần biết") mới được truy cập dữ liệu người học để phục vụ đào tạo và hỗ trợ sinh viên.</li>
+            <li>• <strong>Nghiêm cấm tuyệt đối</strong> việc cung cấp, rò rỉ hoặc bán danh sách thông tin cá nhân của sinh viên cho các trung tâm thương mại, tổ chức tín dụng, bảo hiểm hoặc quảng cáo bên ngoài.</li>
+          </ul>
+        </div>
+
+        <div class="apple-card p-6 sm:p-8 searchable-item">
+          <span class="text-xs font-semibold text-apple-blue dark:text-blue-400 uppercase">Điều 9.2 • Minh bạch Tài chính & Tài sản Công</span>
+          <h3 class="text-xl font-bold text-zinc-900 dark:text-white mt-1.5 mb-3">Tính Chính xác của Hồ sơ Tài chính & Không Thỏa thuận Phụ</h3>
+          <p class="text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed mb-4">
+            Sự tin cậy của các nhà đầu tư, nhà tài trợ học bổng và cơ quan quản lý nhà nước dựa trên tính trung thực tuyệt đối của sổ sách kế toán tại DThU:
+          </p>
+          <ul class="text-xs sm:text-sm space-y-2 text-zinc-700 dark:text-zinc-300">
+            <li>• Mọi khoản thu học phí, chi trả học bổng, thanh quyết toán đề tài nghiên cứu khoa học và quỹ Đoàn - Hội phải phản ánh đúng bản chất giao dịch thực tế, không làm giả chứng từ hay kê khai khống giờ giảng.</li>
+            <li>• Nghiêm cấm ký kết các "thỏa thuận phụ" (side letters) hoặc lập quỹ ngoài sổ sách làm sai lệch báo cáo tài chính.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 4: TRÁCH NHIỆM GIẢI TRÌNH CÁ NHÂN & XUNG ĐỘT LỢI ÍCH
+         ========================================== -->
+    <section id="trach-nhiem" class="scroll-mt-24 space-y-10 pt-8 border-t border-black/10 dark:border-white/10">
+      <div class="max-w-3xl">
+        <p class="text-xs font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 mb-2">Phần 04 • Trách nhiệm Giải trình Cá nhân</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">Tránh Xung đột Lợi ích & Chuẩn mực Quà tặng Học đường</h2>
+        <p class="text-base text-apple-subtext dark:text-zinc-400 mt-3">
+          Xung đột lợi ích nảy sinh khi quyền lợi cá nhân hoặc quan hệ thân quen giao thoa và làm lệch lạc tính khách quan của quyết định học thuật hoặc quản trị tại Nhà trường.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-6">
+        <!-- Left 7 cols: Conflict of Interest Rules -->
+        <div class="lg:col-span-7 apple-card p-6 sm:p-8 space-y-5 searchable-item">
+          <span class="text-xs font-semibold text-amber-600 dark:text-amber-400 uppercase">Điều 8.1 • Kiểm soát Xung đột Lợi ích</span>
+          <h3 class="text-xl font-bold text-zinc-900 dark:text-white">Các Tình huống Bắt buộc Khai báo và Từ chối Tham gia</h3>
+          <p class="text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed">
+            Có mặt trong một tình huống xung đột lợi ích không phải lúc nào cũng là vi phạm, nhưng <strong>việc che giấu không khai báo</strong> luôn là hành vi vi phạm Bộ Quy tắc. Cán bộ, giảng viên phải chủ động báo cáo và rút tên khỏi hội đồng trong các trường hợp sau:
+          </p>
+          <div class="space-y-3 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300">
+            <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-black/5 dark:border-white/5">
+              <strong>1. Quan hệ Gia đình & Tình cảm thân thiết:</strong> Không trực tiếp ra đề thi, coi thi, chấm thi, hướng dẫn/chấm khóa luận tốt nghiệp, xét học bổng hoặc xét tuyển dụng/bổ nhiệm đối với người có quan hệ vợ/chồng, con, anh chị em ruột hoặc quan hệ tình cảm cá nhân.
+            </div>
+            <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-black/5 dark:border-white/5">
+              <strong>2. Lợi ích Tài chính tại Nhà cung cấp / Đối tác:</strong> Không tham gia thẩm định giá, đấu thầu mua sắm thiết bị, sách giáo trình hoặc dịch vụ cho Trường nếu bản thân hoặc người thân có cổ phần hay lợi ích tài chính tại doanh nghiệp dự thầu.
+            </div>
+            <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-black/5 dark:border-white/5">
+              <strong>3. Hoạt động Chuyên môn Bên ngoài:</strong> Việc giảng dạy thỉnh giảng, tư vấn bên ngoài không được sử dụng thời gian hành chính, tài sản/thương hiệu của DThU khi chưa được phép hoặc gây ảnh hưởng đến chất lượng giảng dạy tại Trường.
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 cols: Interactive Gift & 20/11 Checker -->
+        <div class="lg:col-span-5 apple-card p-6 sm:p-8 flex flex-col justify-between bg-gradient-to-b from-amber-50/50 to-white dark:from-zinc-900 dark:to-zinc-900 searchable-item">
+          <div>
+            <span class="text-xs font-semibold text-dthu-lotus dark:text-pink-400 uppercase">Điều 8.2 • Công cụ Tra cứu Nhanh</span>
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-white mt-1 mb-2">Ranh giới giữa "Tri ân Nhà giáo" & "Quà tặng Vi phạm"</h3>
+            <p class="text-xs text-apple-subtext dark:text-zinc-400 mb-4">
+              Chọn tình huống quà tặng dưới đây để kiểm tra quy định ứng xử chuẩn mực của Trường Đại học Đồng Tháp:
+            </p>
+
+            <div class="space-y-2 mb-4">
+              <button onclick="checkGiftRule(1)" id="gift-btn-1" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 transition">
+                1. Phong bì tiền mặt, thẻ quà tặng, chuyển khoản hoặc hiện kim
+              </button>
+              <button onclick="checkGiftRule(2)" id="gift-btn-2" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 transition">
+                2. Hoa tươi, thiệp viết tay tri ân tập thể dịp 20/11 hoặc Lễ tốt nghiệp
+              </button>
+              <button onclick="checkGiftRule(3)" id="gift-btn-3" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 transition">
+                3. Quà biếu cá nhân/Tiệc chiêu đãi trước kỳ chấm thi hoặc bảo vệ khóa luận
+              </button>
+              <button onclick="checkGiftRule(4)" id="gift-btn-4" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 transition">
+                4. Hoa hồng/"Lại quả" từ nhà cung cấp thiết bị, đồng phục, thực tập
+              </button>
+            </div>
+          </div>
+
+          <div id="giftResultBox" class="p-4 rounded-2xl bg-rose-100/80 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 text-xs leading-relaxed">
+            <p class="font-bold text-rose-800 dark:text-rose-300 mb-1">✕ NGHIÊM CẤM TUYỆT ĐỐI (ZERO TOLERANCE)</p>
+            <p class="text-rose-900 dark:text-rose-200">
+              Cán bộ, giảng viên, viên chức tuyệt đối không được gợi ý, đòi hỏi hoặc nhận tiền mặt, thẻ quà tặng, chuyển khoản dưới bất kỳ hình thức hay dịp lễ nào từ sinh viên, học viên hoặc phụ huynh.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 5: SỰ LIÊM CHÍNH & PHỤNG SỰ XÃ HỘI
+         ========================================== -->
+    <section id="liem-chinh" class="scroll-mt-24 space-y-10 pt-8 border-t border-black/10 dark:border-white/10">
+      <div class="max-w-3xl">
+        <p class="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-2">Phần 05 • Sự Liêm chính & Trách nhiệm Xã hội</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">Chuẩn mực Tuyển sinh, Thực tập Sư phạm & Đại học Xanh</h2>
+        <p class="text-base text-apple-subtext dark:text-zinc-400 mt-3">
+          Thực thi trọn vẹn 4 nghĩa vụ trong Trách nhiệm Xã hội (Kinh tế, Pháp lý, Đạo đức, Nhân văn) đối với người học, các trường phổ thông đối tác và cộng đồng vùng Đồng bằng sông Cửu Long.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="apple-card p-6 sm:p-7 searchable-item">
+          <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase">Điều 10 • Người học & Xã hội</span>
+          <h3 class="text-lg font-bold text-zinc-900 dark:text-white mt-2 mb-2.5">Cam kết Chất lượng Đào tạo & Tư vấn Tuyển sinh Trung thực</h3>
+          <p class="text-xs sm:text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed">
+            Đảm bảo 4 quyền cơ bản của người học: quyền được học tập an toàn, quyền được cung cấp thông tin minh bạch, quyền được lựa chọn và quyền được lắng nghe. Không sử dụng thông tin phóng đại, mập mờ về học phí hay cam kết việc làm sai thực tế khi truyền thông tuyển sinh.
+          </p>
+        </div>
+
+        <div class="apple-card p-6 sm:p-7 searchable-item">
+          <span class="text-xs font-semibold text-dthu-blue dark:text-blue-400 uppercase">Điều 11 • Đối tác & Trường Phổ thông</span>
+          <h3 class="text-lg font-bold text-zinc-900 dark:text-white mt-2 mb-2.5">Tác phong Thực tập Sư phạm & Hợp tác Minh bạch</h3>
+          <p class="text-xs sm:text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed">
+            Sinh viên và giảng viên khi đi thực tập sư phạm tại các trường phổ thông hoặc thực tế tại doanh nghiệp là đại diện cho thương hiệu DThU: phải giữ gìn chuẩn mực sư phạm, bảo mật thông tin học sinh/đơn vị thực tập và tuyệt đối không dùng quà cáp để xin điểm thực tập.
+          </p>
+        </div>
+
+        <div class="apple-card p-6 sm:p-7 searchable-item">
+          <span class="text-xs font-semibold text-dthu-lotus dark:text-pink-400 uppercase">Điều 12 • Cộng đồng & Môi trường</span>
+          <h3 class="text-lg font-bold text-zinc-900 dark:text-white mt-2 mb-2.5">Đại học Xanh & Nghĩa vụ Nhân văn Đích thực</h3>
+          <p class="text-xs sm:text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed">
+            Thực hành tiết kiệm năng lượng, giảm rác thải nhựa và kiểm soát nghiêm ngặt hóa chất thải phòng thí nghiệm. Các hoạt động tình nguyện, khuyến học và chuyển giao khoa học cho địa phương được thực hiện bằng tâm huyết phụng sự, không thương mại hóa từ thiện.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 6: LA BÀN ĐẠO ĐỨC & CƠ CHẾ THỰC THI (SPEAK UP)
+         ========================================== -->
+    <section id="tai-nguyen" class="scroll-mt-24 space-y-12 pt-8 border-t border-black/10 dark:border-white/10">
+      <div class="max-w-3xl">
+        <p class="text-xs font-bold uppercase tracking-widest text-apple-blue dark:text-blue-400 mb-2">Phần 06 • Công cụ Ra Quyết định & Bảo vệ Người Lên tiếng</p>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">"La bàn Đạo đức DThU" & Chính sách Không Trả đũa</h2>
+      </div>
+
+      <!-- INTERACTIVE 5-STEP ETHICAL COMPASS (Algorithm Đạo đức) -->
+      <div class="apple-card p-6 sm:p-10 bg-gradient-to-br from-zinc-900 to-zinc-800 text-white">
+        <div class="flex flex-col lg:flex-row gap-8 justify-between">
+          <div class="lg:w-5/12 space-y-4">
+            <span class="px-3 py-1 rounded-full bg-white/10 text-blue-300 text-xs font-semibold">Công cụ Tương tác • Điều 13</span>
+            <h3 class="text-2xl sm:text-3xl font-bold leading-tight">La bàn Đạo đức 5 Bước (Ethical Algorithm)</h3>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+              Khi đứng trước một tình huống khó xử ("vùng xám" đạo đức), hãy sử dụng công cụ kiểm tra 5 bước dưới đây để phân tích <strong>Động cơ – Mục đích – Phương tiện – Hệ quả</strong> trước khi hành động:
+            </p>
+            <div class="pt-2">
+              <button onclick="resetCompass()" class="text-xs text-zinc-400 hover:text-white underline">Làm mới bài kiểm tra quyết định ↺</button>
+            </div>
+          </div>
+
+          <div class="lg:w-7/12 bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-between" id="compassContainer">
+            <div>
+              <div class="flex items-center justify-between text-xs text-zinc-400 mb-3">
+                <span id="compassStepBadge" class="font-bold text-blue-400 uppercase">BƯỚC 1 / 5 • KIỂM TRA NGHĨA VỤ PHÁP LÝ & QUY CHẾ</span>
+                <span id="compassProgressText">20%</span>
+              </div>
+              <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mb-5">
+                <div id="compassProgressBar" class="h-full bg-gradient-to-r from-blue-500 to-pink-500 transition-all duration-300" style="width: 20%"></div>
+              </div>
+              <h4 id="compassQuestion" class="text-lg sm:text-xl font-bold text-white mb-2">
+                Hành động dự kiến của bạn có tuân thủ pháp luật Việt Nam, quy chế của Bộ GD&ĐT và nội quy của Trường Đại học Đồng Tháp không?
+              </h4>
+              <p id="compassHint" class="text-xs sm:text-sm text-zinc-300 mb-6">
+                Tham chiếu: Nghĩa vụ pháp lý là giới hạn tối thiểu không được phép vượt qua dưới bất kỳ lý do nào.
+              </p>
+            </div>
+
+            <div id="compassButtons" class="flex flex-wrap gap-3">
+              <button onclick="answerCompass(true)" class="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold transition">
+                Có, hoàn toàn hợp pháp & đúng quy chế →
+              </button>
+              <button onclick="answerCompass(false)" class="px-5 py-2.5 rounded-full bg-rose-600/80 hover:bg-rose-600 text-white text-xs sm:text-sm font-semibold transition">
+                Không / Có dấu hiệu lách quy chế
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zero Retaliation & Academic Protection Mechanism -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="apple-card p-6 sm:p-8 border-l-4 border-l-dthu-lotus searchable-item">
+          <span class="text-xs font-bold uppercase text-dthu-lotus dark:text-pink-400">Điều 15 • Bảo vệ Tuyệt đối Người Lên tiếng</span>
+          <h3 class="text-xl font-bold text-zinc-900 dark:text-white mt-1.5 mb-3">Chính sách "Không Trả đũa" & Cơ chế Chấm thi Độc lập</h3>
+          <p class="text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed mb-4">
+            Trường Đại học Đồng Tháp nghiêm cấm và không dung thứ cho bất kỳ hành vi trả đũa nào (dù trực tiếp hay ngầm cô lập) đối với cán bộ, giảng viên hoặc sinh viên đã báo cáo mối lo ngại đạo đức với thiện chí.
+          </p>
+          <div class="p-4 rounded-xl bg-pink-50/70 dark:bg-pink-950/30 text-xs sm:text-sm text-zinc-800 dark:text-zinc-200 space-y-1.5">
+            <p class="font-bold text-dthu-lotus dark:text-pink-400">🛡 Lá chắn "Chống Trả đũa Học thuật" dành cho Sinh viên:</p>
+            <p>
+              Khi sinh viên phản ánh có căn cứ về hành vi vi phạm đạo đức của giảng viên đang trực tiếp giảng dạy mình, Hội đồng Đạo đức và Phòng Khảo thí sẽ lập tức kích hoạt cơ chế <strong>rọc phách mù 2 vòng hoặc hội đồng chấm thi độc lập</strong> đối với bài thi/khóa luận của sinh viên đó để triệt tiêu 100% nguy cơ bị trù dập qua điểm số.
+            </p>
+          </div>
+        </div>
+
+        <div class="apple-card p-6 sm:p-8 flex flex-col justify-between searchable-item">
+          <div>
+            <span class="text-xs font-bold uppercase text-apple-blue dark:text-blue-400">Điều 14 & 16 • Kênh Báo cáo & Tài nguyên</span>
+            <h3 class="text-xl font-bold text-zinc-900 dark:text-white mt-1.5 mb-3">Liên hệ Hội đồng Đạo đức & Đường dây Trợ giúp</h3>
+            <p class="text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed mb-4">
+              Mọi thắc mắc cần tư vấn hoặc báo cáo vi phạm (có thể chọn hình thức ẩn danh) đều được tiếp nhận 24/7 và bảo mật nghiêm ngặt:
+            </p>
+            <div class="space-y-2.5 text-xs sm:text-sm">
+              <div class="flex items-center justify-between py-2 border-b border-black/5 dark:border-white/10">
+                <span class="text-apple-subtext dark:text-zinc-400">Cổng Báo cáo Ẩn danh Trực tuyến:</span>
+                <button onclick="openSpeakUpModal()" class="font-semibold text-apple-blue dark:text-blue-400 hover:underline">speakup.dthu.edu.vn ↗</button>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-black/5 dark:border-white/10">
+                <span class="text-apple-subtext dark:text-zinc-400">Email Hội đồng Đạo đức & Thanh tra:</span>
+                <span class="font-mono font-medium text-zinc-900 dark:text-white">ethics@dthu.edu.vn</span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-black/5 dark:border-white/10">
+                <span class="text-apple-subtext dark:text-zinc-400">Địa chỉ Trụ sở:</span>
+                <span class="font-medium text-zinc-900 dark:text-white">783 Phạm Hữu Lầu, P. Cao Lãnh, Đồng Tháp</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button onclick="openSpeakUpModal()" class="px-5 py-2.5 rounded-full bg-dthu-lotus text-white text-xs sm:text-sm font-semibold hover:opacity-95 transition">
+              Gửi Báo cáo / Câu hỏi Ẩn danh
+            </button>
+            <button onclick="openCertModal()" class="px-5 py-2.5 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs sm:text-sm font-semibold hover:opacity-90 transition">
+              Ký Xác nhận Tuân thủ Năm 2026
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- APPLE-STYLE MINIMALIST FOOTER -->
+  <footer class="border-t border-black/10 dark:border-white/10 bg-zinc-100/70 dark:bg-zinc-950 py-10 text-xs text-apple-subtext dark:text-zinc-500 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-black/5 dark:border-white/10">
+        <div class="flex items-center space-x-2">
+          <span class="font-bold text-zinc-900 dark:text-white">Trường Đại học Đồng Tháp (Dong Thap University - DThU)</span>
+          <span>•</span>
+          <span>Triết lý Quản lý bằng Giá trị (MBV)</span>
+        </div>
+        <div>
+          <span>Phiên bản ban hành: Tháng 10/2026 • Thiết kế theo chuẩn Giao ước Đạo đức Quốc tế</span>
+        </div>
+      </div>
+      <p class="leading-relaxed">
+        Chỉ Hội đồng Trường mới có thẩm quyền phê duyệt các nội dung sửa đổi, bổ sung đối với Bộ Quy tắc Ứng xử Đạo đức này và mọi sự điều chỉnh đều phải được công bố công khai trên Cổng thông tin điện tử chính thức của Trường Đại học Đồng Tháp. Bản quyền © 2026 Trường Đại học Đồng Tháp.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       MODAL 1: CỔNG "LÊN TIẾNG" (SPEAK UP) ẨN DANH
+       ========================================== -->
+  <div id="speakUpModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4 no-print">
+    <div class="apple-card max-w-xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeSpeakUpModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-white">✕</button>
+      
+      <div class="space-y-4">
+        <span class="px-2.5 py-1 rounded-full bg-pink-100 dark:bg-pink-950 text-dthu-lotus dark:text-pink-400 text-xs font-bold uppercase">Cổng Bảo mật 24/7 • Không Trả đũa</span>
+        <h3 class="text-2xl font-bold text-zinc-900 dark:text-white">Lên tiếng (Speak Up) & Tham vấn Đạo đức</h3>
+        <p class="text-xs sm:text-sm text-apple-subtext dark:text-zinc-400 leading-relaxed">
+          Bạn có thể đặt câu hỏi về một tình huống khó xử hoặc báo cáo hành vi vi phạm Bộ Quy tắc. Hệ thống mặc định <strong>mã hóa ẩn danh</strong> và kích hoạt cơ chế bảo vệ người tố giác.
+        </p>
+
+        <form id="speakUpForm" onsubmit="submitSpeakUp(event)" class="space-y-4 pt-2">
+          <div>
+            <label class="block text-xs font-semibold uppercase text-zinc-600 dark:text-zinc-400 mb-1.5">Phân loại nội dung</label>
+            <select required class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-transparent focus:border-apple-blue text-sm outline-none">
+              <option value="question">Hỏi & Tham vấn tình huống đạo đức ("Vùng xám")</option>
+              <option value="grading">Phản ánh tính công bằng trong chấm thi / đánh giá</option>
+              <option value="gift">Báo cáo xung đột lợi ích / gợi ý quà cáp, tiêu cực</option>
+              <option value="harassment">Báo cáo hành vi quấy rối, bắt nạt hoặc phân biệt đối xử</option>
+              <option value="ai_data">Báo cáo vi phạm bản quyền, gian lận AI hoặc rò rỉ dữ liệu</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase text-zinc-600 dark:text-zinc-400 mb-1.5">Mô tả chi tiết sự việc hoặc câu hỏi của bạn</label>
+            <textarea required rows="4" placeholder="Nêu rõ thời gian, địa điểm, hành vi cụ thể hoặc điều bạn đang phân vân..." class="w-full px-3.5 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-transparent focus:border-apple-blue text-sm outline-none"></textarea>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200/60 dark:border-blue-900 space-y-2">
+            <label class="flex items-start space-x-2.5 cursor-pointer">
+              <input type="checkbox" checked class="mt-1 rounded text-apple-blue" />
+              <span class="text-xs text-zinc-800 dark:text-zinc-200">
+                <strong>Gửi dưới chế độ Ẩn danh hoàn toàn:</strong> Không lưu địa chỉ IP hay thông tin tài khoản của tôi.
+              </span>
+            </label>
+            <label class="flex items-start space-x-2.5 cursor-pointer">
+              <input type="checkbox" class="mt-1 rounded text-dthu-lotus" />
+              <span class="text-xs text-zinc-800 dark:text-zinc-200">
+                <strong>Yêu cầu kích hoạt "Chấm thi Độc lập 2 vòng":</strong> Bảo vệ kết quả học phần của tôi khỏi nguy cơ bị trả đũa điểm số.
+              </span>
+            </label>
+          </div>
+
+          <div class="flex justify-end space-x-3 pt-2">
+            <button type="button" onclick="closeSpeakUpModal()" class="px-4 py-2 rounded-full text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800">Hủy</button>
+            <button type="submit" class="px-6 py-2 rounded-full bg-dthu-lotus text-white text-xs sm:text-sm font-semibold hover:opacity-95 transition">Gửi Báo cáo Bảo mật</button>
+          </div>
+        </form>
+
+        <div id="speakUpSuccess" class="hidden p-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-center space-y-3">
+          <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto font-bold">✓</div>
+          <h4 class="font-bold text-base text-zinc-900 dark:text-white">Đã ghi nhận báo cáo bảo mật của bạn</h4>
+          <p class="text-xs text-zinc-600 dark:text-zinc-300">
+            Mã tra cứu hồ sơ ẩn danh của bạn là: <strong id="trackingCode" class="font-mono text-sm text-emerald-700 dark:text-emerald-400">DTHU-2026-8942</strong>. Hội đồng Đạo đức sẽ phản hồi kết quả xác minh qua mã tra cứu này trong vòng 5 ngày làm việc.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 2: XÁC NHẬN TUÂN THỦ HẰNG NĂM (APPLE CERTIFICATION)
+       ========================================== -->
+  <div id="certModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4 no-print">
+    <div class="apple-card max-w-lg w-full p-6 sm:p-8 relative">
+      <button onclick="closeCertModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-white">✕</button>
+      
+      <span class="px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-apple-blue dark:text-blue-400 text-xs font-bold uppercase">Chương trình Giao ước Đạo đức 2026</span>
+      <h3 class="text-2xl font-bold text-zinc-900 dark:text-white mt-2 mb-2">Chứng nhận Hiểu biết & Cam kết Tuân thủ</h3>
+      <p class="text-xs sm:text-sm text-apple-subtext dark:text-zinc-400 mb-5">
+        Tương tự quy chuẩn quản trị của các tập đoàn hàng đầu thế giới, mọi thành viên DThU thực hiện xác nhận định kỳ hằng năm đối với Bản Giao ước Giá trị của Nhà trường.
+      </p>
+
+      <form onsubmit="submitCertification(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase text-zinc-600 dark:text-zinc-400 mb-1">Vai trò của bạn tại Đại học Đồng Tháp</label>
+          <select id="certRole" class="w-full px-3.5 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-sm outline-none">
+            <option value="Giảng viên / Cán bộ Quản lý">Giảng viên / Cán bộ Quản lý / Viên chức</option>
+            <option value="Sinh viên / Học viên / Nghiên cứu sinh">Sinh viên / Học viên / Nghiên cứu sinh</option>
+            <option value="Đối tác / Nhà đầu tư / Nhà cung cấp">Đối tác / Nhà đầu tư / Nhà cung cấp dịch vụ</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold uppercase text-zinc-600 dark:text-zinc-400 mb-1">Họ và tên (hoặc Mã số CB/SV/Đơn vị)</label>
+          <input id="certName" type="text" required placeholder="Nhập họ tên hoặc mã số của bạn..." class="w-full px-3.5 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-sm outline-none" />
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 text-xs space-y-2 text-zinc-700 dark:text-zinc-300">
+          <label class="flex items-start space-x-2 cursor-pointer">
+            <input type="checkbox" required class="mt-0.5 rounded text-apple-blue" />
+            <span>Tôi đã đọc, hiểu rõ và cam kết thực hiện 5 Giá trị Cốt lõi cùng các chuẩn mực trong Bộ Quy tắc Ứng xử Đạo đức DThU.</span>
+          </label>
+          <label class="flex items-start space-x-2 cursor-pointer">
+            <input type="checkbox" required class="mt-0.5 rounded text-apple-blue" />
+            <span>Tôi cam kết đặt sự phát triển giá trị, tính liêm chính học thuật và bảo mật dữ liệu lên trên mọi lợi ích vị kỷ ngắn hạn.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="w-full py-2.5 rounded-full bg-apple-blue text-white text-sm font-semibold hover:opacity-95 transition">
+          Ký Xác nhận Giao ước Đạo đức 2026
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 3: TÌM KIẾM NHANH (CMD/CTRL + K)
+       ========================================== -->
+  <div id="searchModal" class="fixed inset-0 z-50 hidden items-start justify-center bg-black/50 backdrop-blur-sm pt-20 p-4 no-print">
+    <div class="apple-card max-w-xl w-full p-5 relative">
+      <div class="flex items-center space-x-3 border-b border-black/10 dark:border-white/10 pb-3">
+        <svg class="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input id="searchInput" oninput="performSearch(this.value)" type="text" placeholder="Nhập từ khóa (VD: AI, quà tặng, 20/11, chấm thi, nhà đầu tư, dữ liệu)..." class="w-full bg-transparent text-sm sm:text-base outline-none text-zinc-900 dark:text-white" />
+        <button onclick="closeSearchModal()" class="text-xs px-2 py-1 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500">ESC</button>
+      </div>
+      <div id="searchResults" class="mt-4 max-h-72 overflow-y-auto space-y-2 text-xs sm:text-sm">
+        <p class="text-apple-subtext text-center py-4">Gõ từ khóa bất kỳ để tra cứu nhanh điều khoản trong Bộ Quy tắc.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // 1. STAKEHOLDER VALUE MATRIX DATA
+    const stakeholderData = {
+      investor: {
+        badge: 'Đối tượng Hữu quan Chiến lược • Nhà Đầu tư, Nhà Tài trợ & Doanh nghiệp Đối tác',
+        title: 'Tại sao các Nhà đầu tư và Đối tác chọn đồng hành cùng Đại học Đồng Tháp?',
+        concern: 'Mối quan tâm cốt lõi: Bảo toàn và phát triển giá trị nguồn vốn tài trợ; sự minh bạch tài chính; an toàn pháp lý; uy tín thương hiệu và nguồn nhân lực chất lượng cao.',
+        commitments: [
+          'Minh bạch 100% hồ sơ tài chính, hạch toán chuẩn mực và sẵn sàng kiểm toán độc lập đối với mọi quỹ học bổng, tài trợ và dự án hợp tác R&D.',
+          'Chính sách Không khoan nhượng với tham nhũng, "lại quả", hoa hồng ngầm hoặc thỏa thuận phụ trong mua sắm và đấu thầu.',
+          'Đào tạo thế hệ sinh viên tốt nghiệp vừa giỏi chuyên môn, làm chủ công nghệ, vừa có tính kỷ luật và đạo đức nghề nghiệp vững vàng.'
+        ],
+        benefit: 'Động lực Hợp tác Đầu tư (Win - Win): Giảm thiểu tối đa rủi ro pháp lý và thất thoát nguồn lực; nâng tầm giá trị thương hiệu của Nhà đầu tư khi gắn kết với một trường đại học có "Nhân cách lớn" tại ĐBSCL; trực tiếp tuyển dụng nguồn nhân tài đáng tin cậy.'
+      },
+      student: {
+        badge: 'Đối tượng Hữu quan Trung tâm • Sinh viên, Học viên & Phụ huynh',
+        title: 'Cam kết Giá trị Giáo dục Thực chất & Bảo vệ Người học Tuyệt đối',
+        concern: 'Mối quan tâm cốt lõi: Chất lượng đào tạo xứng đáng với học phí; môi trường học đường an toàn; chấm điểm công bằng; bảo mật thông tin cá nhân và cơ hội nghề nghiệp.',
+        commitments: [
+          'Đặt sự phát triển năng lực và nhân cách người học lên trên mục tiêu doanh thu; ưu tiên tái đầu tư nguồn lực cho học bổng, phòng thí nghiệm và học liệu số.',
+          'Thực thi công lý trong đánh giá (công khai rubric, chấm thi công minh) và kích hoạt "Chấm thi độc lập 2 vòng" bảo vệ sinh viên dám lên tiếng chống tiêu cực.',
+          'Bảo mật tuyệt đối hồ sơ học tập điện tử (e-Portfolio) và dữ liệu cá nhân, không chia sẻ cho các đơn vị thương mại bên ngoài.'
+        ],
+        benefit: 'Lợi ích Cộng hưởng: Người học yên tâm phát triển toàn diện trong môi trường văn minh; bằng cấp của DThU được xã hội và nhà tuyển dụng đánh giá cao; cựu sinh viên tự hào quay lại đóng góp cho trường.'
+      },
+      faculty: {
+        badge: 'Đối tượng Hữu quan Nội bộ • Giảng viên, Viên chức & Nhà khoa học',
+        title: 'Môi trường Học thuật Tin cậy, Tôn trọng Bản quyền & Đãi ngộ Công minh',
+        concern: 'Mối quan tâm cốt lõi: Sự tôn trọng nghề nghiệp; quyền tự do sáng tạo học thuật; bảo vệ quyền sở hữu trí tuệ; phân định rõ quyền hạn - trách nhiệm và thu nhập chính đáng.',
+        commitments: [
+          'Đánh giá năng lực và khen thưởng theo nguyên tắc "Hình - Danh" (dựa trên kết quả cống hiến thực chất, không thiên vị hay cảm tính).',
+          'Bảo vệ quyền tác giả đối với giáo trình, bài giảng, công trình nghiên cứu và sáng kiến đổi mới của giảng viên.',
+          'Tạo dựng bầu không khí dân chủ, hợp tác, xóa bỏ áp lực quà cáp hay chạy chọt nội bộ.'
+        ],
+        benefit: 'Lợi ích Cộng hưởng: Đội ngũ nhà giáo toàn tâm toàn ý cho giảng dạy và nghiên cứu đỉnh cao, tạo nên sức mạnh hợp lực (Synergy) bền vững cho toàn trường.'
+      },
+      community: {
+        badge: 'Đối tượng Hữu quan Xã hội • Sở GD&ĐT, Trường Phổ thông & Tỉnh Đồng Tháp',
+        title: 'Trung tâm Tri thức Tiên phong Phụng sự Cộng đồng Đất Sen Hồng & ĐBSCL',
+        concern: 'Mối quan tâm cốt lõi: Đội ngũ giáo viên và nhân lực tương lai có đạo đức sư phạm; sự phát triển bền vững về kinh tế - văn hóa - môi trường tại địa phương.',
+        commitments: [
+          'Kiểm soát nghiêm chuẩn đầu ra và kỷ luật thực tập sư phạm tại các trường phổ thông đối tác.',
+          'Tiên phong xây dựng "Đại học Xanh", kiểm soát an toàn hóa chất và giảm thiểu tác động môi trường.',
+          'Thực hiện các chương trình tình nguyện, bồi dưỡng giáo viên và chuyển giao khoa học bằng trách nhiệm nhân văn đích thực.'
+        ],
+        benefit: 'Lợi ích Cộng hưởng: Chính quyền địa phương, các Sở GD&ĐT và trường phổ thông hoàn toàn tin tưởng đặt hàng đào tạo, giao phó các đề tài chiến lược và tiếp nhận sinh viên DThU.'
+      }
+    };
+
+    function switchStakeholder(key) {
+      document.querySelectorAll('.stakeholder-tab').forEach(btn => {
+        btn.className = 'stakeholder-tab text-zinc-600 dark:text-zinc-400 px-3.5 py-1.5 rounded-full hover:text-zinc-900 transition';
+      });
+      const activeBtn = document.getElementById('tab-' + key);
+      activeBtn.className = 'stakeholder-tab bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-semibold px-3.5 py-1.5 rounded-full shadow-sm transition';
+
+      const d = stakeholderData[key];
+      document.getElementById('stakeholderContent').innerHTML = `
+        <div class="space-y-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-dthu-blue dark:text-blue-400">${d.badge}</span>
+          <h4 class="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white">${d.title}</h4>
+          <p class="text-xs sm:text-sm text-apple-subtext dark:text-zinc-400 italic">${d.concern}</p>
+          <div class="grid md:grid-cols-3 gap-4 pt-2">
+            ${d.commitments.map((c, idx) => `
+              <div class="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-800/60 border border-black/5 dark:border-white/5 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                <span class="font-bold text-dthu-lotus dark:text-pink-400 block mb-1">Cam kết 0${idx + 1}</span>
+                ${c}
+              </div>
+            `).join('')}
+          </div>
+          <div class="p-4 rounded-2xl bg-blue-50/80 dark:bg-blue-950/40 border border-blue-200/60 dark:border-blue-900 text-xs sm:text-sm text-zinc-800 dark:text-zinc-200">
+            <strong>★ Giá trị Cộng hưởng:</strong> ${d.benefit}
+          </div>
+        </div>
+      `;
+    }
+
+    // Initialize default stakeholder tab
+    switchStakeholder('investor');
+
+    // 2. GIFT & HOSPITALITY CHECKER
+    const giftRules = {
+      1: {
+        type: 'danger',
+        title: '✕ NGHIÊM CẤM TUYỆT ĐỐI (ZERO TOLERANCE)',
+        desc: 'Cán bộ, giảng viên, viên chức tuyệt đối không được gợi ý, đòi hỏi hoặc nhận tiền mặt, thẻ quà tặng, chuyển khoản hay hiện kim dưới bất kỳ hình thức hay dịp lễ nào từ sinh viên, học viên hoặc phụ huynh.'
+      },
+      2: {
+        type: 'success',
+        title: '✓ ĐƯỢC PHÉP (VĂN HÓA TRI ÂN TRUYỀN THỐNG)',
+        desc: 'Hoa tươi, thiệp chúc mừng viết tay hoặc vật phẩm lưu niệm giản dị mang giá trị tinh thần của tập thể lớp nhân dịp Ngày Nhà giáo Việt Nam 20/11 hoặc Lễ tốt nghiệp là nét đẹp văn hóa "Tôn sư trọng đạo", hoàn toàn phù hợp khi không gắn với bất kỳ điều kiện xin điểm hay ưu ái cá nhân nào.'
+      },
+      3: {
+        type: 'danger',
+        title: '✕ NGHIÊM CẤM (XUNG ĐỘT LỢI ÍCH TRỰC TIẾP)',
+        desc: 'Mọi hành vi nhận quà cáp cá nhân hoặc tham gia tiệc chiêu đãi do sinh viên/học viên chi trả trước hoặc trong kỳ chấm thi, chấm khóa luận tốt nghiệp, xét học bổng đều bị coi là vi phạm nghiêm trọng tính công minh học thuật.'
+      },
+      4: {
+        type: 'danger',
+        title: '✕ NGHIÊM CẤM (HÀNH VI HỐI LỘ / LẠI QUẢ)',
+        desc: 'Nhận "hoa hồng", "lại quả", chiết khấu cá nhân từ nhà cung cấp thiết bị, nhà xuất bản, đơn vị đồng phục hoặc cơ sở tiếp nhận thực tập là hành vi tham nhũng, xâm hại trực tiếp lợi ích của người học và uy tín Nhà trường.'
+      }
+    };
+
+    function checkGiftRule(id) {
+      for (let i = 1; i <= 4; i++) {
+        const btn = document.getElementById('gift-btn-' + i);
+        if (i === id) {
+          btn.className = 'w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 transition';
+        } else {
+          btn.className = 'w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 transition';
+        }
+      }
+      const r = giftRules[id];
+      const box = document.getElementById('giftResultBox');
+      if (r.type === 'success') {
+        box.className = 'p-4 rounded-2xl bg-emerald-100/80 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-xs leading-relaxed';
+        box.innerHTML = `<p class="font-bold text-emerald-800 dark:text-emerald-300 mb-1">${r.title}</p><p class="text-emerald-900 dark:text-emerald-200">${r.desc}</p>`;
+      } else {
+        box.className = 'p-4 rounded-2xl bg-rose-100/80 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 text-xs leading-relaxed';
+        box.innerHTML = `<p class="font-bold text-rose-800 dark:text-rose-300 mb-1">${r.title}</p><p class="text-rose-900 dark:text-rose-200">${r.desc}</p>`;
+      }
+    }
+
+    // 3. INTERACTIVE 5-STEP ETHICAL COMPASS
+    const compassSteps = [
+      {
+        badge: 'BƯỚC 1 / 5 • NGHĨA VỤ PHÁP LÝ & QUY CHẾ',
+        progress: 20,
+        q: 'Hành động dự kiến của bạn có tuân thủ pháp luật Việt Nam, quy chế của Bộ GD&ĐT và nội quy của Trường Đại học Đồng Tháp không?',
+        hint: 'Tham chiếu: Nghĩa vụ pháp lý là giới hạn tối thiểu không được phép vượt qua dưới bất kỳ lý do nào.',
+        yesText: 'Có, hoàn toàn hợp pháp & đúng quy chế →',
+        noText: 'Không / Có dấu hiệu lách quy chế'
+      },
+      {
+        badge: 'BƯỚC 2 / 5 • XÁC MINH ĐỘNG CƠ & MỤC ĐÍCH',
+        progress: 40,
+        q: 'Động cơ thực sự phía sau quyết định này có xuất phát từ lợi ích chung của người học và Nhà trường (thay vì tư lợi vị kỷ cá nhân) không?',
+        hint: 'Tham chiếu Algorithm Đạo đức: Loại trừ chủ nghĩa vị kỷ và xung đột lợi ích cá nhân.',
+        yesText: 'Có, vì lợi ích chung & trong sáng →',
+        noText: 'Có pha trộn tư lợi cá nhân / cục bộ'
+      },
+      {
+        badge: 'BƯỚC 3 / 5 • PHƯƠNG TIỆN & CÔNG LÝ ("GOLDEN RULE")',
+        progress: 60,
+        q: 'Cách thức thực hiện có công bằng, minh bạch không? Nếu bạn ở vị trí người học hoặc đối tác chịu tác động, bạn có thấy tâm phục khẩu phục không?',
+        hint: 'Tham chiếu Thuyết Đạo đức Hành vi: "Mục đích tốt không thể biện minh cho phương tiện bất công hay lừa gạt".',
+        yesText: 'Có, công bằng và tôn trọng các bên →',
+        noText: 'Thiếu minh bạch / Gây thiệt thòi cho người khác'
+      },
+      {
+        badge: 'BƯỚC 4 / 5 • ĐÁNH GIÁ HỆ QUẢ LAN TRUYỀN & THƯƠNG HIỆU',
+        progress: 80,
+        q: 'Quyết định này có bảo vệ được uy tín lâu dài ("Nhân cách DThU") và niềm tin của các nhà đầu tư, đối tác dành cho Nhà trường không?',
+        hint: 'Tham chiếu Chủ nghĩa Vị lợi: Tối đa hóa tác động tích cực lâu dài và giảm thiểu rủi ro uy tín.',
+        yesText: 'Có, củng cố uy tín của DThU →',
+        noText: 'Có nguy cơ làm tổn hại uy tín Nhà trường'
+      },
+      {
+        badge: 'BƯỚC 5 / 5 • PHÉP THỬ THẢO LUẬN CÔNG KHAI',
+        progress: 100,
+        q: 'Nếu quyết định này được đăng tải công khai trên Cổng thông tin của Trường hoặc báo chí vào ngày mai, bạn có hoàn toàn tự hào bảo vệ nó không?',
+        hint: 'Nguyên tắc vàng: "Một vấn đề càng được thảo luận công khai càng ít nguy cơ nảy sinh sai phạm đạo đức".',
+        yesText: 'Hoàn toàn tự tin & minh bạch ✓',
+        noText: 'Ngại công khai / Muốn giữ kín'
+      }
+    ];
+
+    let currentCompassStep = 0;
+
+    function renderCompassStep() {
+      const s = compassSteps[currentCompassStep];
+      document.getElementById('compassStepBadge').textContent = s.badge;
+      document.getElementById('compassProgressText').textContent = s.progress + '%';
+      document.getElementById('compassProgressBar').style.width = s.progress + '%';
+      document.getElementById('compassQuestion').textContent = s.q;
+      document.getElementById('compassHint').textContent = s.hint;
+      document.getElementById('compassButtons').innerHTML = `
+        <button onclick="answerCompass(true)" class="px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold transition">
+          ${s.yesText}
+        </button>
+        <button onclick="answerCompass(false)" class="px-5 py-2.5 rounded-full bg-rose-600/80 hover:bg-rose-600 text-white text-xs sm:text-sm font-semibold transition">
+          ${s.noText}
+        </button>
+      `;
+    }
+
+    function answerCompass(isYes) {
+      if (!isYes) {
+        document.getElementById('compassQuestion').innerHTML = '<span class="text-rose-400">⚠ CẢNH BÁO RỦI RO ĐẠO ĐỨC: HÃY DỪNG LẠI HOẶC THAM VẤN NGAY!</span>';
+        document.getElementById('compassHint').innerHTML = 'Quyết định này không vượt qua được bước kiểm tra chuẩn mực của DThU. Đừng tự ý thực hiện một mình — hãy trao đổi công khai với cấp quản lý trực tiếp hoặc gửi câu hỏi ẩn danh tới Hội đồng Đạo đức để được hướng dẫn.';
+        document.getElementById('compassButtons').innerHTML = `
+          <button onclick="openSpeakUpModal()" class="px-5 py-2.5 rounded-full bg-dthu-lotus text-white text-xs sm:text-sm font-semibold">Hỏi Hội đồng Đạo đức (Speak Up)</button>
+          <button onclick="resetCompass()" class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold">Kiểm tra lại từ Bước 1</button>
+        `;
+        return;
+      }
+
+      if (currentCompassStep < compassSteps.length - 1) {
+        currentCompassStep++;
+        renderCompassStep();
+      } else {
+        document.getElementById('compassQuestion').innerHTML = '<span class="text-emerald-400">✓ QUYẾT ĐỊNH HỢP CHUẨN ĐẠO ĐỨC & VĂN HÓA DThU!</span>';
+        document.getElementById('compassHint').innerHTML = 'Hành động của bạn đã vượt qua cả 5 tiêu chí kiểm định về Pháp lý, Động cơ, Công bằng, Hệ quả Thương hiệu và Tính Minh bạch. Bạn có thể tự tin triển khai và lưu hồ sơ minh bạch.';
+        document.getElementById('compassButtons').innerHTML = `
+          <button onclick="resetCompass()" class="px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-semibold">Kiểm tra một tình huống khác ↺</button>
+        `;
+      }
+    }
+
+    function resetCompass() {
+      currentCompassStep = 0;
+      renderCompassStep();
+    }
+
+    // 4. MODALS & CERTIFICATION LOGIC
+    function openSpeakUpModal() {
+      document.getElementById('speakUpForm').classList.remove('hidden');
+      document.getElementById('speakUpSuccess').classList.add('hidden');
+      const m = document.getElementById('speakUpModal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+    function closeSpeakUpModal() {
+      const m = document.getElementById('speakUpModal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+    function submitSpeakUp(e) {
+      e.preventDefault();
+      const rand = Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('trackingCode').textContent = 'DTHU-2026-' + rand;
+      document.getElementById('speakUpForm').classList.add('hidden');
+      document.getElementById('speakUpSuccess').classList.remove('hidden');
+    }
+
+    function openCertModal() {
+      const m = document.getElementById('certModal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+    function closeCertModal() {
+      const m = document.getElementById('certModal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+    function submitCertification(e) {
+      e.preventDefault();
+      const name = document.getElementById('certName').value;
+      const btn = document.getElementById('certStatusBtn');
+      btn.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span><span>Đã cam kết (${name})</span>`;
+      closeCertModal();
+    }
+
+    // 5. SEARCH MODAL LOGIC
+    function openSearchModal() {
+      const m = document.getElementById('searchModal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+      setTimeout(() => document.getElementById('searchInput').focus(), 50);
+    }
+    function closeSearchModal() {
+      const m = document.getElementById('searchModal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+    function performSearch(query) {
+      const container = document.getElementById('searchResults');
+      const q = query.trim().toLowerCase();
+      if (!q) {
+        container.innerHTML = '<p class="text-apple-subtext text-center py-4">Gõ từ khóa bất kỳ để tra cứu nhanh điều khoản trong Bộ Quy tắc.</p>';
+        return;
+      }
+      const items = document.querySelectorAll('.searchable-item');
+      let resultsHTML = '';
+      items.forEach(item => {
+        const titleEl = item.querySelector('h3');
+        const text = item.innerText;
+        if (text.toLowerCase().includes(q) && titleEl) {
+          const sec = item.closest('section');
+          const secId = sec ? sec.id : 'gioi-thieu';
+          resultsHTML += `
+            <a href="#${secId}" onclick="closeSearchModal()" class="block p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800 hover:bg-blue-50 dark:hover:bg-zinc-700 transition">
+              <p class="font-bold text-zinc-900 dark:text-white">${titleEl.innerText}</p>
+              <p class="text-xs text-apple-subtext dark:text-zinc-400 line-clamp-2 mt-0.5">${text.replace(titleEl.innerText, '').trim()}</p>
+            </a>
+          `;
+        }
+      });
+      container.innerHTML = resultsHTML || '<p class="text-rose-500 text-center py-4">Không tìm thấy điều khoản nào khớp với từ khóa này.</p>';
+    }
+
+    // Keyboard shortcut Cmd/Ctrl + K and ESC
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openSearchModal();
+      }
+      if (e.key === 'Escape') {
+        closeSearchModal();
+        closeSpeakUpModal();
+        closeCertModal();
+      }
+    });
+
+    // 6. DARK MODE & SCROLL SPY
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+
+    const sections = document.querySelectorAll('main section[id]');
+    const navPills = document.querySelectorAll('.nav-pill');
+    window.addEventListener('scroll', () => {
+      let current = 'gioi-thieu';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 140;
+        if (window.scrollY >= top) {
+          current = sec.getAttribute('id');
+        }
+      });
+      navPills.forEach(pill => {
+        pill.classList.remove('active');
+        if (pill.getAttribute('data-section') === current) {
+          pill.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
